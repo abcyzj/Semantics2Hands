@@ -1,0 +1,98 @@
+# pytorch_lightning==1.7.7
+seed_everything: 9923
+trainer:
+  logger: true
+  enable_checkpointing: true
+  callbacks:
+  - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+    init_args:
+      monitor: val/mixamo_semi_dm_err
+      save_top_k: 1
+      mode: min
+      filename: 'best_mixamo-epoch={epoch}-mixamo_semi_rf={val/mixamo_semi_dm_err:.2f}'
+      auto_insert_metric_name: false
+  - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+    init_args:
+      monitor: val/mano_semi_dm_err
+      save_top_k: 1
+      mode: min
+      filename: 'best_mano-epoch={epoch}-mano_semi_rf={val/mano_semi_dm_err:.2f}'
+      auto_insert_metric_name: false
+  - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+    init_args:
+      every_n_epochs: 5
+      save_top_k: -1
+  default_root_dir: null
+  gradient_clip_val: 0.5
+  gradient_clip_algorithm: norm
+  num_nodes: 1
+  num_processes: null
+  devices: [2]
+  gpus: null
+  auto_select_gpus: false
+  tpu_cores: null
+  ipus: null
+  enable_progress_bar: true
+  overfit_batches: 0.0
+  track_grad_norm: -1
+  check_val_every_n_epoch: 1
+  fast_dev_run: false
+  accumulate_grad_batches: null
+  max_epochs: 100
+  min_epochs: null
+  max_steps: -1
+  min_steps: null
+  max_time: null
+  limit_train_batches: null
+  limit_val_batches: null
+  limit_test_batches: null
+  limit_predict_batches: null
+  val_check_interval: null
+  log_every_n_steps: 10
+  accelerator: gpu
+  strategy: null
+  sync_batchnorm: false
+  precision: 32
+  enable_model_summary: true
+  weights_save_path: null
+  num_sanity_val_steps: 2
+  resume_from_checkpoint: null
+  profiler: null
+  benchmark: null
+  deterministic: null
+  reload_dataloaders_every_n_epochs: 0
+  auto_lr_find: false
+  replace_sampler_ddp: true
+  detect_anomaly: false
+  auto_scale_batch_size: false
+  plugins: null
+  amp_backend: native
+  amp_level: null
+  move_metrics_to_cpu: false
+  multiple_trainloader_mode: max_size_cycle
+model:
+  hidden_channel: 256
+  kernel_size: 3
+  n_layers: 4
+  semi_supervised: true
+  static_hidden_channel: 128
+  n_static_layers: 2
+  norm_type: none
+  pose_repr: ortho6d
+  smplx_model_path: /home/yezj/smplx/models
+  mano_axis_path: ./artifact/MixHand/finger_data/mano_finger_axis.pkl
+  is_rhand: true
+  lambda_anatomical: 0.01
+  anatomical_loss_type: axis
+data:
+  data_path: ./artifact/MixHand
+  data_augment: false
+  window_size: 8
+  normalization: false
+  batch_size: 64
+  num_workers: 8
+ckpt_path: null
+optim:
+  class_path: torch.optim.Adam
+  init_args:
+    lr: 0.0001
