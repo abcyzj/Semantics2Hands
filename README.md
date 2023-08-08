@@ -7,6 +7,8 @@
 
 Official implementation for the paper **"Semantics2Hands: Transferring Hand Motion Semantics between Avatars"**.
 
+## [Project Page](https://abcyzj.github.io/S2H/) | [Paper](https://abcyzj.github.io/S2H/static/pdfs/S2H-camera.pdf)
+
 <div style="text-align:center"><img src="img/motivation.png" width="70%" /></div>
 
 ## Getting Started
