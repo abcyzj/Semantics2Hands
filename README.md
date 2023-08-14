@@ -11,6 +11,17 @@ Official implementation for the paper **"Semantics2Hands: Transferring Hand Moti
 
 <div style="text-align:center"><img src="img/motivation.png" width="70%" /></div>
 
+## Bibtex
+
+```bibtex
+@inproceedings{ye2023semantics,
+  title={Semantics2Hands: Transferring Hand Motion Semantics between Avatars},
+  author={Ye, Zijie and Jia, Jia and Xing, Junliang},
+  booktitle={Proceedings of the 31st ACM International Conference on Multimedia},
+  year={2023}
+}
+```
+
 ## Getting Started
 
 ### 1. Create Conda Environment
